@@ -19,6 +19,6 @@ mysql设计遵守的公式
 
 2.字段选择 固定长度的类型最好使用char， 能使用tinyint就不要使用int  
 
-3.默认值 最好给每个字段一个默认值，最好补鞥呢为null，即not null default  
+3.默认值 最好给每个字段一个默认值，最好不为null，即not null default  
 
 4.适当索引 为每个表创建默认索引
