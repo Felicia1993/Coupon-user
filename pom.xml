@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xdclass</groupId>
-    <artifactId>xdclass-coupon</artifactId>
+    <artifactId>xdclass-user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xdclass-coupon</name>
+    <name>xdclass-user</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

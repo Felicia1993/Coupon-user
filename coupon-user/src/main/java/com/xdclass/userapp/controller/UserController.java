@@ -1,12 +1,9 @@
 package com.xdclass.userapp.controller;
 
 import com.xdclass.couponserviceapi.DTO.UserVO;
-import com.xdclass.userapp.model.TUser;
-import com.xdclass.userapp.service.UserService;
-import org.apache.catalina.User;
+import com.xdclass.userapp.service.dubbo.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.rmi.runtime.Log;
 
 import javax.annotation.Resource;
 

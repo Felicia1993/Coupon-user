@@ -1,4 +1,4 @@
-package com.xdclass.userapp.service;
+package com.xdclass.userapp.service.dubbo;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.xdclass.couponserviceapi.DTO.UserVO;

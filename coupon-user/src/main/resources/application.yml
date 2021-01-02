@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 8092
 druid:
   allow:
     ip: 127.0.0.1
@@ -30,3 +30,22 @@ spring:
       #配置健康统计拦截的filters，去掉后健康解密sql无法统计，wall用于防火墙
       filters: stat,wall
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis:=5000
+dubbo:
+  application:
+    name: dubbo-provider
+  # 使用zookeeper注册中心暴露服务，注意要开启zookeeper
+  register:
+    id: zookeeper-registry
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  protocol:
+    name: dubbo
+    #协议端口
+    port: 20881
+    access-log: dubbo-access.log
+    #重试次数
+  provider:
+    retries: 0
+    timeout: 3000
+  monitor:
+    protocol: registry
