@@ -1,0 +1,32 @@
+server:
+  port: 8091
+druid:
+  allow:
+    ip: 127.0.0.1
+  login:
+    user_name: root
+    password: root
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql//localhost:3306/coupon?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: xieqiqi037005
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      initial-size: 1
+      min-idle: 1
+      max-idle: 5
+      max-wait-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      #打开PSCache，并且制定每个连接上PSCache的大小
+      pool-prepared-statements: false
+      maxPoolPreparedStatementPerConnectionSize: 20
+      #配置健康统计拦截的filters，去掉后健康解密sql无法统计，wall用于防火墙
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis:=5000
