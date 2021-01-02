@@ -91,4 +91,50 @@ dataDir=/usr/local/data
 dataLogDir=/usr/local/logs 
 
 clientPort=2181
+## Dubbo调用可视化界面
+dubbo-admin的搭建
+下载地址：git clone https://github.com/apache/dubbo-admin.git 
+
+cd dubbo-admin-server/src/main/resources/application.properties修改配置地址 
+
+启动命令 cd dubbo-admin-distribution/target 
+
+nohup java -jar dubbo-admin-0.1.jar启动命令 
+
+## 微服务单机实现集群部署
+### 单机如何搭建集群
+服务对外提供的是端口，度单口状态是监听状态（listen），每个服务器的对外端口可以非常多，通过反向代理进行端口映射  
+
+### dubbo负载均衡策略 
+轮询调度算法Round Robin Scheduling
+
+- 轮询调度算法的原理是每一次把来自用户的请求轮流分配给内部中的服务器，从1开始，直到N，然后开始重新循环。算法的优点是其简洁性，它无需记录当前所有连接的状态，所以它是一种无状态调度。 
+
+最少活跃调用 LeastActive LoadBalance 
+
+- 相同活跃数的随机，活跃数指调用	前后计数差 
+
+- 使慢的提供者收到更少请求，因为越慢的提供者的调用前后计数差会越大 
+
+## 基于JVM的shutdownHook优雅关闭 
+### 服务启动端口冲突解决方案 Address already in use 
+- 修改启动端口指定server.port 
+
+- lsof -i:<port>/netstat -anp|grep <port> ==>找到启动端口的进程pid ==> kill -9执行进程强杀 
+
+- kill -15配合shutdownHook实现优雅关闭 
+
+JAVA进程优雅关闭的意义 
+
+- 关闭socket连接 
+
+- 清理临时文件 
+
+- 发送消息通知给订阅方，告知自己下线 
+
+- 各种资源的释放 jekins钩子，往git提交代码==>执行了自动化构建==>服务重启 dubbo spi提供了钩子 
+
+
+
+
 
